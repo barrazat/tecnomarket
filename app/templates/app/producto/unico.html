@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% block contenido %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+    <div class="container">
+        <br><br><br>
+        <div class="row">
+            <div class=" col-12 col-md-9 offset-md-2 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>{{producto.nombre}}</h2>
+                        <hr>
+                        {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" alt="" width="400px" class="rounded mx-auto d-block">
+                        {% else %}
+                        <img src="{% static 'app/img/noimg.jpg' %}" alt="" width="400px" class="rounded mx-auto d-block">
+                        {% endif %}
+                        <hr>
+                        <h3>$ {{producto.precio | intcomma }}</h3>
+                        <h5>{{producto.marca}}</h5>
+                        <h6>{{producto.descripcion}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
